@@ -24,19 +24,17 @@ SELECT AVG(Quantity), MIN(Quantity), MAX(Quantity) FROM orderdetails GROUP BY Or
 ;
 SELECT CustomerID FROM orders WHERE OrderID = 10290
 ;
-SELECT FirstName FROM employees WHERE ReportsTo = null
-;
 SELECT * FROM customers JOIN orders ON customers.CustomerID = orders.CustomerID
 ;
 SELECT * FROM customers LEFT JOIN orders ON customers.CustomerId = orders.CustomerID
 ;
 SELECT * FROM customers RIGHT JOIN orders ON customers.CustomerId = orders.CustomerID
 ;
-SELECT * FROM orders JOIN employees ON orders.EmployeeId = employees.EmployeeId WHERE City = 'London'
+SELECT orders.ShipCity, orders.ShipCountry FROM orders JOIN employees ON orders.EmployeeId = employees.EmployeeId WHERE City = 'London'
 ;
-SELECT ShipName FROM orders JOIN orderdetails ON orders.OrderID = orderdetails.OrderID
+SELECT orders.ShipName FROM orders JOIN `order details` ON orders.OrderID = `order details`.OrderID JOIN products ON `order details`.ProductID = products.ProductID WHERE products.Discontinued = 1
 ;
-Select ShipName FROM orders JOIN products ON orders.ProductID = products.ProductID WHERE Discontinued = 1
+SELECT FirstName FROM employees WHERE ReportsTo = null
 ;
 SELECT FirstName FROM employees WHERE ReportsTo = Andrew
 ;
